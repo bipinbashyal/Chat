@@ -6,6 +6,7 @@ import Settings from "./pages/settings.jsx";
 import SearchBar from "./components/searchbar.jsx";
 
 import Login from "./pages/login.jsx";
+import Registration from "./pages/registration.jsx";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/friends" element={<Friends />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Registration />} />
         </Routes>
       </BrowserRouter>
     </>

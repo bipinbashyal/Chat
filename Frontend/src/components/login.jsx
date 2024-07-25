@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Login() {
   return (
@@ -44,9 +45,11 @@ function Login() {
       </form>
       <div className="mt-5 text-center">
         Dont have an account?{" "}
-        <span className="cursor-pointer text-blue-800 font-semibold hover:text-blue-600">
-          Signup
-        </span>
+        <Link to="/register">
+          <span className="cursor-pointer text-blue-800 font-semibold hover:text-blue-600">
+            Signup
+          </span>
+        </Link>
       </div>
       <div className="mt-5">
         <div className="flex items-center mb-5">
