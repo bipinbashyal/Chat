@@ -15,3 +15,7 @@
     background-color: #ECF4D6;
     height: 100vh;
   }
+
+  .animate{
+    transition:all 500ms cubic-bezier(0.4, 0, 0.2, 1); 
+  }
