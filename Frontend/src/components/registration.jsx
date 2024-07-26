@@ -1,11 +1,60 @@
-import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function Login() {
+  const [formdata, setFormdata] = useState({
+    email: "",
+    password: "",
+    checkpass: "",
+    username: "",
+  });
+
+  const handleChange = (e) => {
+    const id = e.target.id;
+    if (id == "email") {
+      setFormdata({ ...formdata, email: e.target.value });
+    } else if (id == "password") {
+      setFormdata({ ...formdata, password: e.target.value });
+    } else if (id == "username") {
+      setFormdata({ ...formdata, username: e.target.value });
+    } else if (id == "checkpass") {
+      setFormdata({ ...formdata, checkpass: e.target.value });
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (formdata.password != formdata.checkpass) {
+      console.log("password didn't match");
+      return;
+    }
+    const response = await axios.post("http://localhost:8080/register", {
+      email: formdata.email,
+      password: formdata.password,
+      username: formdata.username,
+    });
+    console.log(response);
+  };
   return (
     <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-md">
       <h2 className="text-2xl font-bold text-center mb-4">Signup</h2>
-      <form>
+      <form
+        onChange={(e) => {
+          handleChange(e);
+        }}
+        onSubmit={(e) => {
+          handleSubmit(e);
+        }}
+      >
+        <div className="mb-4">
+          <input
+            type="text"
+            id="username"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Enter your username"
+          />
+        </div>
         <div className="mb-4">
           <input
             type="email"
@@ -25,7 +74,7 @@ function Login() {
         <div className="mb-4">
           <input
             type="password"
-            id="password"
+            id="checkpass"
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Confirm password"
           />

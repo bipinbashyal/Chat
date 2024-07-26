@@ -3,7 +3,7 @@ import RegisComp from "../components/registration";
 
 const Registration = () => {
   return (
-    <div className="flex items-center justify-center mt-10 bg-gray-100">
+    <div className="flex items-center justify-center mt-10">
       <RegisComp />
     </div>
   );
