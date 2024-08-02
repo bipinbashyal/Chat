@@ -9,12 +9,12 @@ const addUser = async (data) => {
 const getUserById = async (id) => {
   return await userModel.findOne({ id });
 };
-const getUserByUsername = async (username) => {
-  return await userModel.findOne({ username });
+const getUserByEmail = async (email) => {
+  return await userModel.findOne({ email });
 };
 
 module.exports = {
   addUser,
   getUserById,
-  getUserByUsername,
+  getUserByEmail,
 };

@@ -12,7 +12,11 @@ const createToken = async (data) => {
 };
 
 const getDataFromToken = async (token) => {
-  return await jwt.verify(token, process.env.JWT_SECRET);
+  try {
+    return await jwt.verify(token, process.env.JWT_SECRET);
+  } catch (err) {
+    throw err;
+  }
 };
 
 module.exports = {
