@@ -51,6 +51,7 @@ function Login() {
           <input
             type="text"
             id="username"
+            required
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter your username"
           />
@@ -59,6 +60,7 @@ function Login() {
           <input
             type="email"
             id="email"
+            required
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter your email"
           />
@@ -67,6 +69,7 @@ function Login() {
           <input
             type="password"
             id="password"
+            required
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Create password"
           />
@@ -75,6 +78,7 @@ function Login() {
           <input
             type="password"
             id="checkpass"
+            required
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Confirm password"
           />

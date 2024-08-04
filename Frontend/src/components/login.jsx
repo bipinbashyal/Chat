@@ -1,17 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { AuthContext } from "@/context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [formdata, setFormdata] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     const id = e.target.id;
-    if (id == "username") {
-      setFormdata({ ...formdata, username: e.target.value });
+    if (id == "email") {
+      setFormdata({ ...formdata, email: e.target.value });
     } else if (id == "password") {
       setFormdata({ ...formdata, password: e.target.value });
     }
@@ -19,8 +24,10 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await axios.post("http://localhost:8080/login", formdata);
-    console.log(response.data);
+    // const response = await axios.post("http://localhost:8080/login", formdata);
+    const response = await login(formdata);
+    console.log(response);
+    navigate("/home");
   };
 
   return (
@@ -36,17 +43,17 @@ function Login() {
       >
         <div className="mb-4">
           <label
-            htmlFor="username"
+            htmlFor="email"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
-            Username
+            Email
           </label>
           <input
-            type="username"
-            id="username"
+            type="email"
+            id="email"
             required
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="Enter your username"
+            placeholder="Enter your email"
           />
         </div>
         <div className="mb-4">

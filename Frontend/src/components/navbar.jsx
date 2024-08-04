@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "@/context/AuthContext";
 // import logo from "../assets/letterline_logo.png"
 
 const Navbar = function () {
+  const { user, logout } = useContext(AuthContext);
   return (
     <>
       <div className="sticky w-full h-[5vw] bg-[#265073] text-[#F2E6E6] font-sans text-[1.5vw] flex items-center justify-between">
@@ -27,12 +30,21 @@ const Navbar = function () {
             Settings
           </Link>
         </ul>
-        <Link
+        {!user ? null : (
+          <Link
+            onClick={logout}
+            to="/"
+            className="animate delay-100 mr-[1vw] px-5 py-2  hover:cursor-pointer hover:rounded-full hover:bg-[#174164]"
+          >
+            Logout
+          </Link>
+        )}
+        {/* <Link
           to="/"
           className="animate delay-100 mr-[1vw] px-5 py-2  hover:cursor-pointer hover:rounded-full hover:bg-[#174164]"
         >
           Logout
-        </Link>
+        </Link> */}
       </div>
     </>
   );
