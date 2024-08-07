@@ -4,6 +4,7 @@ const cookieParser = require("cookie-parser");
 
 const registerRouter = require("./routes/register/register.router");
 const loginRouter = require("./routes/login/login.router");
+const usersRouter = require("./routes/users/users.router");
 
 const authenticate = require("./auth/server.auth");
 
@@ -14,6 +15,7 @@ app.use(cookieParser());
 
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
+app.use("/users", usersRouter);
 
 app.get("/", authenticate, (req, res) => {
   res.send("welcome to the backend");
