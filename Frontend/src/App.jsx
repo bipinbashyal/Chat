@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar.jsx";
 import Home from "./pages/home.jsx";
-import Friends from "./pages/friends.jsx";
+import Users from "./pages/users.jsx";
 import Settings from "./pages/settings.jsx";
 import SearchBar from "./components/searchbar.jsx";
 
@@ -34,10 +34,10 @@ function App() {
               }
             />
             <Route
-              path="/friends"
+              path="/users"
               element={
                 <PrivateRoute>
-                  <Friends />
+                  <Users />
                 </PrivateRoute>
               }
             />

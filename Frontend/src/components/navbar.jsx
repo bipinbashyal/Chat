@@ -18,10 +18,10 @@ const Navbar = function () {
             Home
           </Link>
           <Link
-            to="/friends"
+            to="/users"
             className="animate delay-100 px-5 py-2  hover:cursor-pointer hover:rounded-full hover:bg-[#174164]"
           >
-            Friends
+            Users
           </Link>
           <Link
             to="/settings"
