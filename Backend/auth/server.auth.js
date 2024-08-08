@@ -3,9 +3,8 @@ const { getUserById } = require("../models/user/users.model");
 
 const authenticateUser = async (req, res, next) => {
   try {
-    const id = await getDataFromToken(req.cookies.id);
-    const user = getUserById(id);
-    console.log(id, user);
+    const { data } = await getDataFromToken(req.cookies.token);
+    const user = await getUserById(data);
     req.user = user;
     next();
   } catch (err) {

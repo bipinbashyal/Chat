@@ -1,5 +1,6 @@
 import axios from "axios";
-const BackendUrl = "http://localhost:8080";
+import Cookies from "js-cookie";
+const BackendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const registerUser = async (userData) => {
   return await axios.post(`${BackendUrl}/register`, userData);
@@ -8,7 +9,8 @@ const registerUser = async (userData) => {
 const loginUser = async (creds) => {
   const response = await axios.post(`${BackendUrl}/login`, creds);
   if (response.data?.token) {
-    localStorage.setItem("user", JSON.stringify(response.data));
+    localStorage.setItem("user", JSON.stringify(response.data.userData));
+    Cookies.set("token", response.data.token);
   }
   return response.data;
 };

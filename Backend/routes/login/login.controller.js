@@ -6,7 +6,7 @@ const httpGetUser = async (req, res) => {
   const user = await getUserByEmail(req.body.email);
   if (user && (await checkPassword(user.password, req.body.password))) {
     const token = await createToken(user._id);
-    res.cookie("id", token);
+    res.cookie("token", token);
     const userData = {
       username: user.username,
       email: user.email,

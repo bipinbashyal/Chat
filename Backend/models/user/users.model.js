@@ -80,7 +80,7 @@ const getUserByEmail = async (email) => {
 };
 
 const getAllUsers = async () => {
-  return await userModel.find({});
+  return await userModel.find({}).select("username email ");
 };
 
 const getFriends = async (userId) => {
@@ -95,6 +95,7 @@ const getUsersExceptUserAndFriends = async (userId) => {
     .find({
       _id: { $nin: excludeIds },
     })
+    .select("username email ")
     .exec();
 };
 
