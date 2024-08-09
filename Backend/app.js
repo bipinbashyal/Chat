@@ -6,6 +6,7 @@ const registerRouter = require("./routes/register/register.router");
 const loginRouter = require("./routes/login/login.router");
 const usersRouter = require("./routes/users/users.router");
 const authenticate = require("./auth/server.auth");
+const friendsRouter = require("./routes/friends/friends.router");
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use(cookieParser());
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
 app.use("/users", authenticate, usersRouter);
+app.use("/friends", authenticate, friendsRouter);
 
 app.get("/", authenticate, (req, res) => {
   res.send("welcome to the backend");

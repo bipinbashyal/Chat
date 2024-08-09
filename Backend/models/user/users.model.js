@@ -90,7 +90,12 @@ const getFriends = async (userId) => {
 
 const getUsersExceptUserAndFriends = async (userId) => {
   const user = await userModel.findById(userId).exec();
-  const excludeIds = user.friends.concat(userId);
+  const excludeIds = [
+    ...user.friends,
+    ...user.sentRequests,
+    ...user.receivedRequests,
+    userId,
+  ];
   return await userModel
     .find({
       _id: { $nin: excludeIds },
