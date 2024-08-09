@@ -9,4 +9,41 @@ const sendRequest = async (friendId) => {
   );
 };
 
-export { sendRequest };
+const cancelRequest = async (friendId) => {
+  return await axios.post(
+    `${BackendUrl}/friends/removeSentRequest`,
+    { friendId },
+    { withCredentials: true }
+  );
+};
+
+const addFriend = async (friendId) => {
+  return await axios.post(
+    `${BackendUrl}/friends/addFriend`,
+    { friendId },
+    { withCredentials: true }
+  );
+};
+
+const getReceivedRequests = async () => {
+  const response = await axios.get(
+    `${BackendUrl}/friends/getReceivedRequests`,
+    { withCredentials: true }
+  );
+  return response.data.receivedRequests;
+};
+
+const getSentRequests = async () => {
+  const response = await axios.get(`${BackendUrl}/friends/getSentRequests`, {
+    withCredentials: true,
+  });
+  return response.data.sentRequests;
+};
+
+export {
+  sendRequest,
+  cancelRequest,
+  addFriend,
+  getReceivedRequests,
+  getSentRequests,
+};

@@ -20,6 +20,8 @@ const logoutUser = async () => {
 };
 
 const getUser = () => {
+  const cookie = Cookies.get("token");
+  if (!cookie) return null;
   return JSON.parse(localStorage.getItem("user"));
 };
 
