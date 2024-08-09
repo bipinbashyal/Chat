@@ -7,6 +7,9 @@ const addUser = async (data) => {
 };
 
 const addFriend = async (userId, friendId) => {
+  await userModel.findByIdAndUpdate(friendId, {
+    $addToSet: { friends: userId },
+  });
   const user = await userModel
     .findByIdAndUpdate(
       userId,
@@ -18,6 +21,7 @@ const addFriend = async (userId, friendId) => {
 };
 
 const removeFriend = async (userId, friendId) => {
+  await userModel.findByIdAndUpdate(friendId, { $pull: { friends: userId } });
   const user = await userModel
     .findByIdAndUpdate(
       userId,
@@ -29,6 +33,9 @@ const removeFriend = async (userId, friendId) => {
 };
 
 const addSentRequest = async (userId, friendId) => {
+  await userModel.findByIdAndUpdate(friendId, {
+    $addToSet: { receivedRequests: userId },
+  });
   const user = await userModel
     .findByIdAndUpdate(
       userId,
@@ -40,6 +47,9 @@ const addSentRequest = async (userId, friendId) => {
 };
 
 const removeSentRequest = async (userId, friendId) => {
+  await userModel.findByIdAndUpdate(friendId, {
+    $pull: { receivedRequests: userId },
+  });
   const user = await userModel
     .findByIdAndUpdate(
       userId,
@@ -84,8 +94,11 @@ const getAllUsers = async () => {
 };
 
 const getFriends = async (userId) => {
-  const user = await userModel.findById(userId).populate("friends").exec();
-  return user.friends;
+  return await userModel
+    .findById(userId)
+    .populate("friends")
+    .select("friends")
+    .exec();
 };
 
 const getUsersExceptUserAndFriends = async (userId) => {
@@ -104,6 +117,20 @@ const getUsersExceptUserAndFriends = async (userId) => {
     .exec();
 };
 
+const getReceivedRequests = async (userId) => {
+  return await userModel
+    .findById(userId)
+    .populate("receivedRequests")
+    .select("receivedRequests");
+};
+
+const getSentRequests = async (userId) => {
+  return await userModel
+    .findById(userId)
+    .populate("sentRequests")
+    .select("sentRequests");
+};
+
 module.exports = {
   addUser,
   addFriend,
@@ -117,4 +144,6 @@ module.exports = {
   getAllUsers,
   getUsersExceptUserAndFriends,
   getFriends,
+  getReceivedRequests,
+  getSentRequests,
 };
