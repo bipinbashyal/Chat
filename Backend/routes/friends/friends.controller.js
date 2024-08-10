@@ -10,6 +10,8 @@ const {
   getFriends,
 } = require("../../models/user/users.model");
 
+const { addChat } = require("../../models/chat/chat.model");
+
 const httpGetReceivedRequests = async (req, res) => {
   return res.json(await getReceivedRequests(req.user._id));
 };
@@ -23,9 +25,15 @@ const httpGetFriends = async (req, res) => {
 };
 
 const httpAddFriend = async (req, res) => {
+  const chat = {
+    isGroup: false,
+    members: [req.body.friendId, req.user._id],
+    created_by: req.user._id,
+  };
   await removeSentRequest(req.body.friendId, req.user._id);
   await removeReceivedRequest(req.user._id, req.body.friendId);
   await addFriend(req.body.friendId, req.user._id);
+  await addChat(chat);
   return res.json(await addFriend(req.user._id, req.body.friendId));
 };
 
