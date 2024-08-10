@@ -24,9 +24,13 @@ const removeChat = async (chatId) => {
   }
 };
 
-const getAllChat = async (userId) => {
+const getAllChat = async (userId, page) => {
   try {
-    return await chatModel.find({ members: userId }).sort({ updatedAt: -1 });
+    return await chatModel
+      .find({ members: userId })
+      .sort({ updatedAt: -1 })
+      .skip(page * 10)
+      .limit(10);
   } catch (err) {
     console.log(err);
     throw err;
