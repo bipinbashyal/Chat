@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import SearchBar from "../components/searchbar.jsx";
 import SendBar from "../components/sendbar.jsx";
 import FriendBlock from "../components/friendblock.jsx";
@@ -8,7 +8,8 @@ import { IconContext } from "react-icons";
 import FileUpload from "../components/fileupload.jsx";
 import PhotoUpload from "../components/photoupload.jsx";
 import SendVoice from "../components/sendvoice.jsx";
-import { getAllChat } from "@/api/chats.api.js";
+// import { getAllChat } from "@/api/chats.api.js";
+import { useChatsContext } from "@/hooks/useChatsContext.js";
 
 const messages = [
   {
@@ -35,13 +36,16 @@ const messages = [
 
 function Home() {
   const [value, setValue] = useState("");
-  const [chats, setChats] = useState(null);
+  // const [chats, setChats] = useState(null);
+  const { chats, setChats, getChats } = useChatsContext();
 
+  // if (!chatsRef) {
   useEffect(() => {
     (async () => {
-      setChats(await getAllChat());
+      setChats(await getChats());
     })();
   }, []);
+  // }
 
   // const friendsList = [
   //   "Bipin Bashyal",

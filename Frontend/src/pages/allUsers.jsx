@@ -1,19 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import UserCard from "@/components/userCard";
-import { getUsers } from "@/api/users.api";
 import { sendRequest } from "@/api/friends.api";
+import { useUsersContext } from "@/hooks/useUsersContext";
 
 const AllUsers = function () {
-  const [users, setUsers] = useState(null);
+  const { users, setUsers, getAllUsers, removeUser } = useUsersContext();
 
   useEffect(() => {
     (async () => {
-      setUsers(await getUsers());
+      setUsers(await getAllUsers());
+      console.log(users);
     })();
   }, []);
 
-  const handleClick = async (friendId) => {
-    return await sendRequest(friendId);
+  const handleClick = async (user) => {
+    await sendRequest(user);
+    removeUser(user);
   };
 
   return (

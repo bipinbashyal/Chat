@@ -12,8 +12,8 @@ const SentRequests = function () {
     })();
   }, []);
 
-  const handleClick = async (friendId) => {
-    return await cancelRequest(friendId);
+  const handleClick = async (user) => {
+    return await cancelRequest(user);
   };
 
   return (

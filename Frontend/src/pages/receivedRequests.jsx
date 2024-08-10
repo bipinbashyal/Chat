@@ -12,8 +12,8 @@ const ReceivedRequests = function () {
     })();
   }, []);
 
-  const handleClick = async (friendId) => {
-    return await addFriend(friendId);
+  const handleClick = async (user) => {
+    return await addFriend(user);
   };
 
   return (

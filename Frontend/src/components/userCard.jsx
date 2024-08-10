@@ -11,7 +11,7 @@ const UserCard = ({ user, buttonText, handleClick }) => {
       <div className="text-slate-400">{user.email}</div>
       <Button
         onClick={() => {
-          handleClick(user._id);
+          handleClick(user);
         }}
       >
         {buttonText}

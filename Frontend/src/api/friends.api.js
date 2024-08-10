@@ -1,34 +1,34 @@
 import axios from "axios";
 const BackendUrl = import.meta.env.VITE_BACKEND_URL;
 
-const sendRequest = async (friendId) => {
+const sendRequest = async (user) => {
   return await axios.post(
     `${BackendUrl}/friends/sendRequest`,
-    { friendId },
+    { friendId: user._id },
     { withCredentials: true }
   );
 };
 
-const cancelRequest = async (friendId) => {
+const cancelRequest = async (user) => {
   return await axios.post(
     `${BackendUrl}/friends/removeSentRequest`,
-    { friendId },
+    { friendId: user._id },
     { withCredentials: true }
   );
 };
 
-const addFriend = async (friendId) => {
+const addFriend = async (user) => {
   return await axios.post(
     `${BackendUrl}/friends/addFriend`,
-    { friendId },
+    { friendId: user._id },
     { withCredentials: true }
   );
 };
 
-const removeFriend = async (friendId) => {
+const removeFriend = async (user) => {
   return await axios.post(
     `${BackendUrl}/friends/removeFriend`,
-    { friendId },
+    { friendId: user._id },
     { withCredentials: true }
   );
 };

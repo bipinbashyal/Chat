@@ -1,30 +1,35 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import UserCard from "@/components/userCard";
-import { getFriends, removeFriend } from "@/api/friends.api";
+import { useFriendsContext } from "@/context/FriendsContext";
+import { useUsersContext } from "@/hooks/useUsersContext";
 
 const MyFriends = function () {
-  const [users, setUsers] = useState(null);
+  // const [users, setUsers] = useState(null);
+  const { friends, getAllFriends, setFriends, deleteFriend } =
+    useFriendsContext();
+  const { addUser } = useUsersContext();
 
   useEffect(() => {
     (async () => {
-      setUsers(await getFriends());
+      setFriends(await getAllFriends());
     })();
   }, []);
 
-  const handleClick = async (friendId) => {
-    return await removeFriend(friendId);
+  const handleClick = async (user) => {
+    await deleteFriend(user);
+    addUser(user);
   };
 
   return (
     <>
-      {users ? (
-        users.length ? (
+      {friends ? (
+        friends.length ? (
           <div className="m-4">
             <div className="flex flex-row flex-wrap gap-8">
-              {users.map((user) => (
+              {friends.map((friend) => (
                 <UserCard
-                  key={user._id}
-                  user={user}
+                  key={friend._id}
+                  user={friend}
                   buttonText={"Remove Friend"}
                   handleClick={handleClick}
                 />
