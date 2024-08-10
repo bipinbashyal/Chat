@@ -12,6 +12,7 @@ import PrivateRoute from "./components/privateRoute.jsx";
 import UsersOutlet from "./utils/usersOutlet.jsx";
 import ReceivedRequests from "./pages/receivedRequests.jsx";
 import SentRequests from "./pages/sentRequests.jsx";
+import MyFriends from "./pages/myFriends.jsx";
 
 function App() {
   return (
@@ -58,6 +59,14 @@ function App() {
                 element={
                   <UsersOutlet>
                     <SentRequests />
+                  </UsersOutlet>
+                }
+              />
+              <Route
+                path="friends"
+                element={
+                  <UsersOutlet>
+                    <MyFriends />
                   </UsersOutlet>
                 }
               />

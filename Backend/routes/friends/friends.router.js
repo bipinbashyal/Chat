@@ -7,12 +7,14 @@ const {
   httpRemoveRecievedRequest,
   httpGetReceivedRequests,
   httpGetSentRequests,
+  httpGetFriends,
 } = require("./friends.controller");
 
 const friendsRouter = Router();
 
 friendsRouter.get("/getReceivedRequests", httpGetReceivedRequests);
 friendsRouter.get("/getSentRequests", httpGetSentRequests);
+friendsRouter.get("/getFriends", httpGetFriends);
 
 friendsRouter.post("/addFriend", httpAddFriend);
 friendsRouter.post("/removeFriend", httpRemoveFriend);

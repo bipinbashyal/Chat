@@ -25,6 +25,21 @@ const addFriend = async (friendId) => {
   );
 };
 
+const removeFriend = async (friendId) => {
+  return await axios.post(
+    `${BackendUrl}/friends/removeFriend`,
+    { friendId },
+    { withCredentials: true }
+  );
+};
+
+const getFriends = async () => {
+  const response = await axios.get(`${BackendUrl}/friends/getFriends`, {
+    withCredentials: true,
+  });
+  return response.data.friends;
+};
+
 const getReceivedRequests = async () => {
   const response = await axios.get(
     `${BackendUrl}/friends/getReceivedRequests`,
@@ -44,6 +59,8 @@ export {
   sendRequest,
   cancelRequest,
   addFriend,
+  removeFriend,
+  getFriends,
   getReceivedRequests,
   getSentRequests,
 };

@@ -7,6 +7,7 @@ const {
   removeReceivedRequest,
   getReceivedRequests,
   getSentRequests,
+  getFriends,
 } = require("../../models/user/users.model");
 
 const httpGetReceivedRequests = async (req, res) => {
@@ -15,6 +16,10 @@ const httpGetReceivedRequests = async (req, res) => {
 
 const httpGetSentRequests = async (req, res) => {
   return res.json(await getSentRequests(req.user._id));
+};
+
+const httpGetFriends = async (req, res) => {
+  return res.json(await getFriends(req.user._id));
 };
 
 const httpAddFriend = async (req, res) => {
@@ -59,4 +64,5 @@ module.exports = {
   httpRemoveFriend,
   httpRemoveSentRequest,
   httpRemoveRecievedRequest,
+  httpGetFriends,
 };

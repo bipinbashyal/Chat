@@ -23,6 +23,12 @@ const UsersNav = () => {
         >
           Sent Requests
         </Link>
+        <Link
+          to="/users/friends"
+          className="animate delay-100 px-5 py-2  hover:cursor-pointer hover:rounded-full hover:bg-[#174164]"
+        >
+          My Friends
+        </Link>
       </ul>
     </div>
   );
