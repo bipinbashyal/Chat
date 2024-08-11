@@ -2,9 +2,11 @@ import { useEffect } from "react";
 import UserCard from "@/components/userCard";
 import { sendRequest } from "@/api/friends.api";
 import { useUsersContext } from "@/hooks/useUsersContext";
+import { useSentRequestsContext } from "@/context/sentRequestContext";
 
 const AllUsers = function () {
   const { users, setUsers, getAllUsers, removeUser } = useUsersContext();
+  const { addSentRequest } = useSentRequestsContext();
 
   useEffect(() => {
     (async () => {
@@ -16,6 +18,7 @@ const AllUsers = function () {
   const handleClick = async (user) => {
     await sendRequest(user);
     removeUser(user);
+    addSentRequest(user);
   };
 
   return (

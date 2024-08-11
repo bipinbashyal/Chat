@@ -9,7 +9,7 @@ export const FriendsProvider = ({ children }) => {
     return await getFriends();
   };
 
-  const addFriend = (friend) => {
+  const addFriendInList = (friend) => {
     setFriends((prev) => setFriends(...prev, friend));
   };
 
@@ -25,7 +25,13 @@ export const FriendsProvider = ({ children }) => {
 
   return (
     <FriendsContext.Provider
-      value={{ friends, setFriends, getAllFriends, addFriend, deleteFriend }}
+      value={{
+        friends,
+        setFriends,
+        getAllFriends,
+        addFriendInList,
+        deleteFriend,
+      }}
     >
       {children}
     </FriendsContext.Provider>

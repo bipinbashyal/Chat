@@ -1,28 +1,39 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import UserCard from "@/components/userCard";
-import { getReceivedRequests } from "@/api/friends.api";
 import { addFriend } from "@/api/friends.api";
+import { useReceivedRequestsContext } from "@/context/receivedRequestContext";
+import { useFriendsContext } from "@/context/FriendsContext";
 
 const ReceivedRequests = function () {
-  const [users, setUsers] = useState(null);
+  const {
+    receivedRequests,
+    setReceivedRequests,
+    getAllReceivedRequests,
+    removeReceivedRequest,
+  } = useReceivedRequestsContext();
+
+  const { addFriendInList } = useFriendsContext();
 
   useEffect(() => {
     (async () => {
-      setUsers(await getReceivedRequests());
+      setReceivedRequests(await getAllReceivedRequests());
+      console.log(receivedRequests);
     })();
   }, []);
 
   const handleClick = async (user) => {
-    return await addFriend(user);
+    await addFriend(user);
+    removeReceivedRequest(user);
+    addFriendInList(user);
   };
 
   return (
     <>
-      {users ? (
-        users.length ? (
+      {receivedRequests ? (
+        receivedRequests.length ? (
           <div className="m-4">
             <div className="flex flex-row flex-wrap gap-8">
-              {users.map((user) => (
+              {receivedRequests.map((user) => (
                 <UserCard
                   key={user._id}
                   user={user}

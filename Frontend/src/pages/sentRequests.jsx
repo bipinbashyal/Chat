@@ -1,28 +1,38 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import UserCard from "@/components/userCard";
-import { getSentRequests } from "@/api/friends.api";
 import { cancelRequest } from "@/api/friends.api";
+import { useSentRequestsContext } from "@/context/sentRequestContext";
+import { useUsersContext } from "@/hooks/useUsersContext";
 
 const SentRequests = function () {
-  const [users, setUsers] = useState(null);
+  const {
+    sentRequests,
+    setSentRequests,
+    getAllSentRequests,
+    removeSentRequest,
+  } = useSentRequestsContext();
+
+  const { addUser } = useUsersContext();
 
   useEffect(() => {
     (async () => {
-      setUsers(await getSentRequests());
+      setSentRequests(await getAllSentRequests());
     })();
   }, []);
 
   const handleClick = async (user) => {
-    return await cancelRequest(user);
+    await cancelRequest(user);
+    removeSentRequest(user);
+    addUser(user);
   };
 
   return (
     <>
-      {users ? (
-        users.length > 0 ? (
+      {sentRequests ? (
+        sentRequests.length > 0 ? (
           <div className="m-4">
             <div className="flex flex-row flex-wrap gap-8">
-              {users.map((user) => (
+              {sentRequests.map((user) => (
                 <UserCard
                   key={user._id}
                   user={user}

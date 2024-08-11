@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import UserCard from "@/components/userCard";
-import { useFriendsContext } from "@/context/FriendsContext";
+import { useFriendsContext } from "@/context/friendsContext";
 import { useUsersContext } from "@/hooks/useUsersContext";
 
 const MyFriends = function () {
