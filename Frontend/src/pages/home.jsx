@@ -80,14 +80,10 @@ function Home() {
             chats.length > 0 ? (
               chats.map((chat) => {
                 if (chat.isGroup) {
-                  if (
-                    value.length === 0 ||
-                    chat.name.toLowerCase().startsWith(value.toLowerCase())
-                  ) {
+                  if (chat.name.toLowerCase().startsWith(value.toLowerCase())) {
                     return <FriendBlock name={chat.name} />;
                   }
                 } else if (
-                  value.length === 0 ||
                   chat.members[0].username
                     .toLowerCase()
                     .startsWith(value.toLowerCase())

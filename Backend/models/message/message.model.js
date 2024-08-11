@@ -22,7 +22,7 @@ const addMessage = async (message) => {
   }
 };
 
-const deleteMessage = async (messageId) => {
+const removeMessage = async (messageId) => {
   try {
     return await messageModel.findByIdAndDelete(messageId);
   } catch (err) {
@@ -33,5 +33,5 @@ const deleteMessage = async (messageId) => {
 module.exports = {
   getAllChatMessage,
   addMessage,
-  deleteMessage,
+  removeMessage,
 };
