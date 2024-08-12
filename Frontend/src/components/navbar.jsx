@@ -7,7 +7,7 @@ const Navbar = function () {
   const { user, logout } = useContext(AuthContext);
   return (
     <>
-      <div className="sticky w-full h-[5vw] bg-[#265073] text-[#F2E6E6] font-sans text-[1.5vw] flex items-center justify-between">
+      <div className="sticky w-full h-[12vh] bg-[#265073] text-[#F2E6E6] font-sans text-[1.5vw] flex items-center justify-between">
         {/* <img className="h-[5vw] ml-[1vw]" src={logo} alt="logo" /> */}
 
         <ul className="flex w-[25vw] items-center justify-between">
