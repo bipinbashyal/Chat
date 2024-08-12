@@ -10,7 +10,10 @@ export const FriendsProvider = ({ children }) => {
   };
 
   const addFriendInList = (friend) => {
-    setFriends((prev) => setFriends(...prev, friend));
+    setFriends((prev) => {
+      if (prev) return [friend, ...prev];
+      else return [friend];
+    });
   };
 
   const deleteFriend = async (user) => {

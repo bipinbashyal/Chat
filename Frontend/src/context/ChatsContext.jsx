@@ -7,7 +7,10 @@ export const ChatsProvider = ({ children }) => {
   const [chats, setChats] = useState(null);
 
   const addChat = (chat) => {
-    setChats((prev) => [chat, ...prev]);
+    setChats((prev) => {
+      if (prev) return [chat, ...prev];
+      else return [chat];
+    });
   };
 
   const getChats = async () => {

@@ -9,7 +9,10 @@ export const SentRequestsProvider = ({ children }) => {
     return await getSentRequests();
   };
   const addSentRequest = (user) => {
-    setSentRequests((prev) => [user, ...prev]);
+    setSentRequests((prev) => {
+      if (prev) return [user, ...prev];
+      else return [user];
+    });
   };
 
   const removeSentRequest = (user) => {

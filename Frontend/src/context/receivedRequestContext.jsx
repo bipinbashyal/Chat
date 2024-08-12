@@ -9,7 +9,10 @@ export const ReceivedRequestsProvider = ({ children }) => {
     return await getReceivedRequests();
   };
   const addReceivedRequest = (user) => {
-    setReceivedRequests((prev) => [user, ...prev]);
+    setReceivedRequests((prev) => {
+      if (prev) return [user, ...prev];
+      else return [user];
+    });
   };
 
   const removeReceivedRequest = (user) => {

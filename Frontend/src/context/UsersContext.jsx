@@ -17,7 +17,10 @@ export const UsersProvider = ({ children }) => {
     });
   };
   const addUser = (user) => {
-    setUsers((prev) => [...prev, user]);
+    setUsers((prev) => {
+      if (prev) return [user, ...prev];
+      else return [user];
+    });
   };
 
   return (
