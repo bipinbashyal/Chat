@@ -5,6 +5,7 @@ export const ChatsContext = createContext(null);
 
 export const ChatsProvider = ({ children }) => {
   const [chats, setChats] = useState(null);
+  const [currentChat, setCurrentChat] = useState(null);
 
   const addChat = (chat) => {
     setChats((prev) => {
@@ -29,7 +30,15 @@ export const ChatsProvider = ({ children }) => {
   };
   return (
     <ChatsContext.Provider
-      value={{ chats, setChats, addChat, removeChat, getChats }}
+      value={{
+        chats,
+        setChats,
+        addChat,
+        removeChat,
+        getChats,
+        currentChat,
+        setCurrentChat,
+      }}
     >
       {children}
     </ChatsContext.Provider>
