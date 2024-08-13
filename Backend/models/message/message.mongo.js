@@ -1,24 +1,27 @@
 const { Schema, model } = require("mongoose");
 
-const messageSchema = new Schema({
-  chat_id: {
-    type: Schema.Types.ObjectId,
-    ref: "Chat",
-    required: true,
+const messageSchema = new Schema(
+  {
+    chat_id: {
+      type: Schema.Types.ObjectId,
+      ref: "Chat",
+      required: true,
+    },
+    send_by: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    content: {
+      type: String,
+      required: true,
+    },
+    media_url: {
+      type: String,
+    },
   },
-  send_by: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
-  },
-  content: {
-    type: String,
-    required: true,
-  },
-  media_url: {
-    type: String,
-  },
-});
+  { timestamps: true }
+);
 
 const messageModel = model("Message", messageSchema);
 

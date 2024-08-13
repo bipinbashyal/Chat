@@ -12,7 +12,7 @@ const loginUser = async (creds) => {
     localStorage.setItem("user", JSON.stringify(response.data.userData));
     Cookies.set("token", response.data.token);
   }
-  return response.data;
+  return response.data.userData;
 };
 
 const logoutUser = async () => {

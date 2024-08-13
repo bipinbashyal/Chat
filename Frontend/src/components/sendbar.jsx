@@ -21,6 +21,7 @@ const SendBar = function () {
     console.log(message);
     await sendMessage(message);
     addMessage(message);
+    setValue("");
   };
 
   return (
