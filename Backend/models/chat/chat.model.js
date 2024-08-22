@@ -75,10 +75,19 @@ const updateChat = async (chatId) => {
   }
 };
 
+const getChatMembers = async (chatId) => {
+  try {
+    return (await chatModel.findById(chatId).select("members")).members;
+  } catch (err) {
+    throw err;
+  }
+};
+
 module.exports = {
   addChat,
   getAllChat,
   updateChat,
   editChat,
   removeChat,
+  getChatMembers,
 };

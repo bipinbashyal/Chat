@@ -6,7 +6,7 @@ const createToken = async (data) => {
       data,
     },
     process.env.JWT_SECRET,
-    { expiresIn: 60 * 60 }
+    { expiresIn: 60 * 60 * 60 }
   );
   return token;
 };

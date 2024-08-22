@@ -1,15 +1,16 @@
 import { IoSendSharp } from "react-icons/io5";
 import { useState } from "react";
-import { sendMessage } from "@/api/messages.api";
 import { useChatsContext } from "@/hooks/useChatsContext";
 import { useMessagesContext } from "@/context/messagesContext";
 import { useAuthContext } from "@/context/authContext";
+import { useSocketContext } from "@/context/socketContext";
 
 const SendBar = function () {
   const [value, setValue] = useState("");
   const { currentChat } = useChatsContext();
   const { addMessage } = useMessagesContext();
   const { user } = useAuthContext();
+  const { sendSocketMessage } = useSocketContext();
 
   const handleClick = async () => {
     const message = {
@@ -17,9 +18,11 @@ const SendBar = function () {
       send_by: user.uid,
       content: value,
       media_url: null,
+      type: "message",
     };
     console.log(message);
-    await sendMessage(message);
+    message.type = "message";
+    await sendSocketMessage(message);
     addMessage(message);
     setValue("");
   };
