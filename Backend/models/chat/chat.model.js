@@ -27,6 +27,9 @@ const removeChat = async (chatId) => {
 const getAllChat = async (userId, page) => {
   return await chatModel.aggregate([
     {
+      $match: { members: userId },
+    },
+    {
       $project: {
         name: 1, // Include other fields as needed
         isGroup: 1,
