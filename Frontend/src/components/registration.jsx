@@ -1,14 +1,20 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-function Login() {
+function Registration() {
   const [formdata, setFormdata] = useState({
     email: "",
     password: "",
     checkpass: "",
     username: "",
   });
+
+  const [isLoading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const id = e.target.id;
@@ -25,20 +31,32 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     if (formdata.password != formdata.checkpass) {
       console.log("password didn't match");
       return;
     }
-    const response = await axios.post("http://localhost:8080/register", {
-      email: formdata.email,
-      password: formdata.password,
-      username: formdata.username,
-    });
-    console.log(response);
+    try {
+      const response = await axios.post("http://localhost:8080/register", {
+        email: formdata.email,
+        password: formdata.password,
+        username: formdata.username,
+      });
+      console.log(response);
+      setLoading(false);
+      setError(null);
+      navigate("/login");
+    } catch (err) {
+      setLoading(false);
+      setError(err);
+    }
   };
   return (
     <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-md">
       <h2 className="text-2xl font-bold text-center mb-4">Signup</h2>
+      {error ? (
+        <div className="text-red-600">Error occured.Try again Later...</div>
+      ) : null}
       <form
         onChange={(e) => {
           handleChange(e);
@@ -84,9 +102,15 @@ function Login() {
           />
         </div>
         <div className="flex items-center justify-between ">
-          <button className="bg-gray-800 hover:bg-gray-900 transition-all text-white  py-2 px-4  focus:outline-none focus:shadow-outline w-full rounded">
-            Register
-          </button>
+          {isLoading ? (
+            <button className="opacity-75 cursor-not-allowed bg-gray-800 hover:bg-gray-800 transition-all text-white  py-2 px-4  focus:outline-none focus:shadow-outline w-full rounded">
+              Register
+            </button>
+          ) : (
+            <button className="bg-gray-800 hover:bg-gray-900 transition-all text-white  py-2 px-4  focus:outline-none focus:shadow-outline w-full rounded">
+              Register
+            </button>
+          )}
         </div>
       </form>
       <div className="mt-5 text-center">
@@ -101,4 +125,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Registration;

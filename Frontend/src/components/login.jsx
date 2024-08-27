@@ -10,6 +10,9 @@ function Login() {
     password: "",
   });
 
+  const [isLoading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -24,15 +27,26 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     // const response = await axios.post("http://localhost:8080/login", formdata);
-    const response = await login(formdata);
-    console.log(response);
-    navigate("/home");
+    try {
+      const response = await login(formdata);
+      console.log(response);
+      setLoading(false);
+      setError(null);
+      navigate("/home");
+    } catch (err) {
+      setError(err);
+      setLoading(false);
+    }
   };
 
   return (
     <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-md">
       <h2 className="text-2xl font-bold text-center mb-4">Login</h2>
+      {error ? (
+        <div className="text-red-600">Sorry,Try again Later...</div>
+      ) : null}
       <form
         onChange={(e) => {
           handleChange(e);
@@ -75,12 +89,21 @@ function Login() {
           </div>
         </div>
         <div className="flex items-center justify-between ">
-          <button
-            type="submit"
-            className="bg-gray-800 hover:bg-gray-900 transition-all text-white  py-2 px-4  focus:outline-none focus:shadow-outline w-full rounded"
-          >
-            Login
-          </button>
+          {isLoading ? (
+            <button
+              type="submit"
+              className="opacity-75 cursor-not-allowed bg-gray-800 hover:bg-gray-900 transition-all text-white  py-2 px-4  focus:outline-none focus:shadow-outline w-full rounded"
+            >
+              Login
+            </button>
+          ) : (
+            <button
+              type="submit"
+              className="bg-gray-800 hover:bg-gray-900 transition-all text-white  py-2 px-4  focus:outline-none focus:shadow-outline w-full rounded"
+            >
+              Login
+            </button>
+          )}
         </div>
       </form>
       <div className="mt-5 text-center">
