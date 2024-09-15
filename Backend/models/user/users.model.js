@@ -1,4 +1,5 @@
 const userModel = require("./users.mongo");
+const { removeFriendsChat } = require("../chat/chat.model");
 const { generateHash } = require("../../utils/bcrypt");
 
 const addUser = async (data) => {
@@ -21,6 +22,7 @@ const addFriend = async (userId, friendId) => {
 };
 
 const removeFriend = async (userId, friendId) => {
+  await removeFriendsChat(userId, friendId);
   await userModel.findByIdAndUpdate(friendId, { $pull: { friends: userId } });
   const user = await userModel
     .findByIdAndUpdate(

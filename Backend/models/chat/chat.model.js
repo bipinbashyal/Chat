@@ -1,5 +1,5 @@
 const chatModel = require("./chat.mongo");
-
+const { removeMessagesByChat } = require("../message/message.model");
 const addChat = async (chat) => {
   try {
     return await chatModel.create(chat);
@@ -19,6 +19,23 @@ const editChat = async (chatId, chat) => {
 const removeChat = async (chatId) => {
   try {
     return await chatModel.findByIdAndDelete(chatId);
+  } catch (err) {
+    throw err;
+  }
+};
+
+const removeFriendsChat = async (userId, friendId) => {
+  try {
+    console.log("hello", userId, friendId);
+    const chat = await chatModel.findOne({
+      members: { $all: [userId, friendId] },
+      $expr: { $eq: [{ $size: "$members" }, 2] }, // Ensure the array has exactly 2 members
+    });
+    console.log(chat);
+    if (chat) {
+      await removeChat(chat._id);
+      await removeMessagesByChat(chat._id);
+    }
   } catch (err) {
     throw err;
   }
@@ -92,5 +109,6 @@ module.exports = {
   updateChat,
   editChat,
   removeChat,
+  removeFriendsChat,
   getChatMembers,
 };

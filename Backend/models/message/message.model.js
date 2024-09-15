@@ -30,8 +30,18 @@ const removeMessage = async (messageId) => {
   }
 };
 
+const removeMessagesByChat = async (chatId) => {
+  try {
+    console.log(chatId);
+    return await messageModel.deleteMany({ chat_id: chatId });
+  } catch (err) {
+    throw err;
+  }
+};
+
 module.exports = {
   getAllChatMessage,
   addMessage,
   removeMessage,
+  removeMessagesByChat,
 };
