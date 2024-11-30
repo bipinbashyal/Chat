@@ -1,3 +1,4 @@
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar.jsx";
 import Home from "./pages/home.jsx";
@@ -7,12 +8,12 @@ import SearchBar from "./components/searchbar.jsx";
 
 import Login from "./pages/login.jsx";
 import Registration from "./pages/registration.jsx";
-import AuthProvider from "./context/authContext.jsx";
 import PrivateRoute from "./components/privateRoute.jsx";
 import UsersOutlet from "./utils/usersOutlet.jsx";
 import ReceivedRequests from "./pages/receivedRequests.jsx";
 import SentRequests from "./pages/sentRequests.jsx";
 import MyFriends from "./pages/myFriends.jsx";
+import AuthProvider from "./context/authContext.jsx";
 import ChatsProvider from "./context/chatsContext.jsx";
 import { UsersProvider } from "./context/usersContext.jsx";
 import { FriendsProvider } from "./context/friendsContext.jsx";
