@@ -7,7 +7,7 @@ export const SocketProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
   const { addMessage } = useMessagesContext();
   const connectSocket = () => {
-    const newsocket = new WebSocket("ws://localhost:8080");
+    const newsocket = new WebSocket("wss://chat-sore.onrender.com");
     newsocket.onmessage = (event) => {
       console.log(event.data);
       addMessage(JSON.parse(event.data));
