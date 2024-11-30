@@ -28,7 +28,7 @@ app.use("/friends", authenticate, friendsRouter);
 app.use("/chats", authenticate, chatsRouter);
 app.use("/messages", authenticate, messagesRouter);
 
-app.get("/", authenticate, (req, res) => {
+app.get("/", (req, res) => {
   res.send("welcome to the backend");
 });
 
