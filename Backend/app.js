@@ -13,7 +13,7 @@ const messagesRouter = require("./routes/messages/messages.router");
 const app = express();
 
 const corsOptions = {
-  origin: "https://*.bipinbashyal.com.np", // Allow only this origin
+  origin: "https://chat.bipinbashyal.com.np", // Allow only this origin
   credentials: true, // Allow credentials (cookies, etc.)
 };
 
