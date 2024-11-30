@@ -4,7 +4,7 @@ import { useSocketContext } from "./socketContext.jsx";
 
 export const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
+const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(getUser());
   const { socket, connectSocket } = useSocketContext();
 
@@ -36,4 +36,5 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
+export default AuthProvider;
 export const useAuthContext = () => useContext(AuthContext);

@@ -3,7 +3,7 @@ import { getAllChat } from "@/api/chats.api";
 
 export const ChatsContext = createContext(null);
 
-export const ChatsProvider = ({ children }) => {
+const ChatsProvider = ({ children }) => {
   const [chats, setChats] = useState(null);
   const [currentChat, setCurrentChat] = useState(null);
 
@@ -44,3 +44,5 @@ export const ChatsProvider = ({ children }) => {
     </ChatsContext.Provider>
   );
 };
+
+export default ChatsProvider;
