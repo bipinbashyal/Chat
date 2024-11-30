@@ -12,12 +12,20 @@ const messagesRouter = require("./routes/messages/messages.router");
 
 const app = express();
 
-const corsOptions = {
-  origin: "*", // Allow only this origin
-  credentials: true, // Allow credentials (cookies, etc.)
-};
+// const corsOptions = {
+//   origin: "*", // Allow only this origin
+//   credentials: true, // Allow credentials (cookies, etc.)
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      callback(null, true); // Allow all origins
+    },
+    credentials: true, // Allow cookies and credentials
+  })
+);
 app.use(express.json());
 app.use(cookieParser());
 
