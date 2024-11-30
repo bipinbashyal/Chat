@@ -7,6 +7,7 @@ const httpGetUser = async (req, res) => {
   if (user && (await checkPassword(user.password, req.body.password))) {
     const token = await createToken(user._id);
     res.cookie("token", token, {
+      domain: "chat-sore.onrender.com",
       httpOnly: true,
       secure: true,
       sameSite: "none",
