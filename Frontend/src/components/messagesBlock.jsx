@@ -1,6 +1,6 @@
 import SentMessage from "./sentmessage";
 import ReceivedMessage from "./receivedmessage";
-import { useMessagesContext } from "@/context/MessagesContext";
+import { useMessagesContext } from "@/context/messagesContext";
 import { useAuthContext } from "@/context/AuthContext";
 
 const MessagesBlock = () => {

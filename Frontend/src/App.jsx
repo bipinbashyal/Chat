@@ -17,10 +17,10 @@ import AuthProvider from "./context/AuthContext.jsx";
 import ChatsProvider from "./context/ChatsContext.jsx";
 import { UsersProvider } from "./context/UsersContext.jsx";
 import { FriendsProvider } from "./context/FriendsContext.jsx";
-import { ReceivedRequestsProvider } from "./context/ReceivedRequestContext.jsx";
-import { SentRequestsProvider } from "./context/SentRequestContext.jsx";
-import { MessageProvider } from "./context/MessagesContext.jsx";
-import { SocketProvider } from "./context/SocketContext.jsx";
+import { ReceivedRequestsProvider } from "./context/receivedRequestContext.jsx";
+import { SentRequestsProvider } from "./context/sentRequestContext.jsx";
+import { MessageProvider } from "./context/messagesContext.jsx";
+import { SocketProvider } from "./context/socketContext.jsx";
 
 function App() {
   return (

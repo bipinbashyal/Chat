@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import UserCard from "@/components/userCard";
 import { addFriend } from "@/api/friends.api";
-import { useReceivedRequestsContext } from "@/context/ReceivedRequestContext";
+import { useReceivedRequestsContext } from "@/context/receivedRequestContext";
 import { useFriendsContext } from "@/context/FriendsContext";
 
 const ReceivedRequests = function () {

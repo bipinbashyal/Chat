@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import { loginUser, logoutUser, getUser } from "../services/auth.service.js";
-import { useSocketContext } from "./SocketContext.jsx";
+import { useSocketContext } from "./socketContext.jsx";
 
 export const AuthContext = createContext();
 

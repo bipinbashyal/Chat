@@ -1,9 +1,9 @@
 import { IoSendSharp } from "react-icons/io5";
 import { useState } from "react";
 import { useChatsContext } from "@/hooks/useChatsContext";
-import { useMessagesContext } from "@/context/MessagesContext";
+import { useMessagesContext } from "@/context/messagesContext";
 import { useAuthContext } from "@/context/AuthContext";
-import { useSocketContext } from "@/context/SocketContext";
+import { useSocketContext } from "@/context/socketContext";
 
 const SendBar = function () {
   const [value, setValue] = useState("");
