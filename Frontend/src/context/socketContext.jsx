@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { useMessagesContext } from "./messagesContext";
+import { useMessagesContext } from "./MessagesContext";
 const BackendUrl = import.meta.env.VITE_BACKEND_URL;
 
 export const SocketContext = createContext(null);

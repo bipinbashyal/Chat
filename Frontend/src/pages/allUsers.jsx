@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import UserCard from "@/components/userCard";
 import { sendRequest } from "@/api/friends.api";
 import { useUsersContext } from "@/hooks/useUsersContext";
-import { useSentRequestsContext } from "@/context/sentRequestContext";
+import { useSentRequestsContext } from "@/context/SentRequestContext";
 
 const AllUsers = function () {
   const { users, setUsers, getAllUsers, removeUser } = useUsersContext();

@@ -13,14 +13,14 @@ import UsersOutlet from "./utils/usersOutlet.jsx";
 import ReceivedRequests from "./pages/receivedRequests.jsx";
 import SentRequests from "./pages/sentRequests.jsx";
 import MyFriends from "./pages/myFriends.jsx";
-import AuthProvider from "./context/authContext.jsx";
-import ChatsProvider from "./context/chatsContext.jsx";
-import { UsersProvider } from "./context/usersContext.jsx";
-import { FriendsProvider } from "./context/friendsContext.jsx";
-import { ReceivedRequestsProvider } from "./context/receivedRequestContext.jsx";
-import { SentRequestsProvider } from "./context/sentRequestContext.jsx";
-import { MessageProvider } from "./context/messagesContext.jsx";
-import { SocketProvider } from "./context/socketContext.jsx";
+import AuthProvider from "./context/AuthContext.jsx";
+import ChatsProvider from "./context/ChatsContext.jsx";
+import { UsersProvider } from "./context/UsersContext.jsx";
+import { FriendsProvider } from "./context/FriendsContext.jsx";
+import { ReceivedRequestsProvider } from "./context/ReceivedRequestContext.jsx";
+import { SentRequestsProvider } from "./context/SentRequestContext.jsx";
+import { MessageProvider } from "./context/MessagesContext.jsx";
+import { SocketProvider } from "./context/SocketContext.jsx";
 
 function App() {
   return (

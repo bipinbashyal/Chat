@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useChatsContext } from "@/hooks/useChatsContext";
-import { useMessagesContext } from "@/context/messagesContext";
+import { useMessagesContext } from "@/context/MessagesContext";
 import ChatItem from "./chatItem";
 import { getChatMessages } from "../api/messages.api";
 

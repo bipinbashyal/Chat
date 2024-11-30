@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import UserCard from "@/components/userCard";
 import { cancelRequest } from "@/api/friends.api";
-import { useSentRequestsContext } from "@/context/sentRequestContext";
+import { useSentRequestsContext } from "@/context/SentRequestContext";
 import { useUsersContext } from "@/hooks/useUsersContext";
 
 const SentRequests = function () {
