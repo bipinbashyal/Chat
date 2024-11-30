@@ -1,4 +1,5 @@
 import axios from "axios";
+axios.defaults.withCredentials = true;
 const BackendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const getAllChat = async () => {
