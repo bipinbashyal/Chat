@@ -7,7 +7,7 @@ import SearchBar from "./components/searchbar.jsx";
 
 import Login from "./pages/login.jsx";
 import Registration from "./pages/registration.jsx";
-import { AuthProvider } from "./context/authContext.jsx";
+// import { AuthProvider } from "./context/authContext.jsx";
 import PrivateRoute from "./components/privateRoute.jsx";
 import UsersOutlet from "./utils/usersOutlet.jsx";
 import ReceivedRequests from "./pages/receivedRequests.jsx";
@@ -26,83 +26,83 @@ function App() {
     <>
       <MessageProvider>
         <SocketProvider>
-          <AuthProvider>
-            <ChatsProvider>
-              <UsersProvider>
-                <FriendsProvider>
-                  <ReceivedRequestsProvider>
-                    <SentRequestsProvider>
-                      <BrowserRouter>
-                        <Navbar />
-                        <Routes>
+          {/* <AuthProvider> */}
+          <ChatsProvider>
+            <UsersProvider>
+              <FriendsProvider>
+                <ReceivedRequestsProvider>
+                  <SentRequestsProvider>
+                    <BrowserRouter>
+                      <Navbar />
+                      <Routes>
+                        <Route
+                          path="/"
+                          element={
+                            <PrivateRoute>
+                              <Home />
+                            </PrivateRoute>
+                          }
+                        />
+                        <Route
+                          path="/home"
+                          element={
+                            <PrivateRoute>
+                              <Home />
+                            </PrivateRoute>
+                          }
+                        />
+                        <Route path="/users">
                           <Route
-                            path="/"
+                            path=""
                             element={
-                              <PrivateRoute>
-                                <Home />
-                              </PrivateRoute>
+                              <UsersOutlet>
+                                <AllUsers />
+                              </UsersOutlet>
                             }
                           />
                           <Route
-                            path="/home"
+                            path="received"
                             element={
-                              <PrivateRoute>
-                                <Home />
-                              </PrivateRoute>
+                              <UsersOutlet>
+                                <ReceivedRequests />
+                              </UsersOutlet>
                             }
                           />
-                          <Route path="/users">
-                            <Route
-                              path=""
-                              element={
-                                <UsersOutlet>
-                                  <AllUsers />
-                                </UsersOutlet>
-                              }
-                            />
-                            <Route
-                              path="received"
-                              element={
-                                <UsersOutlet>
-                                  <ReceivedRequests />
-                                </UsersOutlet>
-                              }
-                            />
-                            <Route
-                              path="sent"
-                              element={
-                                <UsersOutlet>
-                                  <SentRequests />
-                                </UsersOutlet>
-                              }
-                            />
-                            <Route
-                              path="friends"
-                              element={
-                                <UsersOutlet>
-                                  <MyFriends />
-                                </UsersOutlet>
-                              }
-                            />
-                          </Route>
                           <Route
-                            path="/settings"
+                            path="sent"
                             element={
-                              <PrivateRoute>
-                                <Settings />
-                              </PrivateRoute>
+                              <UsersOutlet>
+                                <SentRequests />
+                              </UsersOutlet>
                             }
                           />
-                          <Route path="/login" element={<Login />} />
-                          <Route path="/register" element={<Registration />} />
-                        </Routes>
-                      </BrowserRouter>
-                    </SentRequestsProvider>
-                  </ReceivedRequestsProvider>
-                </FriendsProvider>
-              </UsersProvider>
-            </ChatsProvider>
-          </AuthProvider>
+                          <Route
+                            path="friends"
+                            element={
+                              <UsersOutlet>
+                                <MyFriends />
+                              </UsersOutlet>
+                            }
+                          />
+                        </Route>
+                        <Route
+                          path="/settings"
+                          element={
+                            <PrivateRoute>
+                              <Settings />
+                            </PrivateRoute>
+                          }
+                        />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/register" element={<Registration />} />
+                      </Routes>
+                    </BrowserRouter>
+                  </SentRequestsProvider>
+                </ReceivedRequestsProvider>
+              </FriendsProvider>
+            </UsersProvider>
+          </ChatsProvider>
+          {/* </AuthProvider> */}
         </SocketProvider>
       </MessageProvider>
     </>
