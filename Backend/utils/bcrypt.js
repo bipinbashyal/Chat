@@ -3,7 +3,7 @@ const saltRounds = process.env.SALT_ROUND;
 
 const generateHash = async (password) => {
   try {
-    const salt = await bcrypt.genSalt(saltRounds);
+    const salt = await bcrypt.genSalt(Number(saltRounds));
     const hash = await bcrypt.hash(password, salt);
     return hash;
   } catch (error) {
