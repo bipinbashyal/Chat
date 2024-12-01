@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { registerUser } from "@/services/auth.service.js";
 
 function Registration() {
   const [formdata, setFormdata] = useState({
@@ -37,11 +37,12 @@ function Registration() {
       return;
     }
     try {
-      const response = await axios.post("http://localhost:8080/register", {
-        email: formdata.email,
-        password: formdata.password,
-        username: formdata.username,
-      });
+      // const response = await axios.post("http://localhost:8080/register", {
+      //   email: formdata.email,
+      //   password: formdata.password,
+      //   username: formdata.username,
+      // });
+      const response = await registerUser(formdata);
       console.log(response);
       setLoading(false);
       setError(null);
