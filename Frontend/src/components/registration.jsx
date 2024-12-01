@@ -42,7 +42,11 @@ function Registration() {
       //   password: formdata.password,
       //   username: formdata.username,
       // });
-      const response = await registerUser(formdata);
+      const response = await registerUser({
+        email: formdata.email,
+        password: formdata.password,
+        username: formdata.username,
+      });
       console.log(response);
       setLoading(false);
       setError(null);
