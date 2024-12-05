@@ -11,7 +11,7 @@ const httpGetUser = async (req, res) => {
       httpOnly: true,
       secure: true,
       sameSite: "none",
-      maxAge: 3600000,
+      maxAge: 3600000 * 24,
     });
     const userData = {
       username: user.username,
