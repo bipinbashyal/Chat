@@ -11,7 +11,7 @@ const Navbar = function () {
       <div
         className={
           hamb
-            ? " w-full bg-[#265073] text-[#F2E6E6] font-sans text-[15px] flex flex-col  items-center justify-center md:justify-between md:text-[1.5vw] md:h-[12vh] md:flex-row h-screen"
+            ? " w-full bg-[#265073] text-[#F2E6E6] font-sans text-[15px] flex flex-col  items-center justify-center md:justify-between md:text-[1.5vw] md:h-[12vh] md:flex-row h-screen absolute top-0 left-0 md:sticky"
             : "sticky w-full h-[10vh] bg-[#265073] text-[#F2E6E6] flex flex-row-reverse items-center"
         }
       >
