@@ -36,12 +36,7 @@ const Navbar = function () {
             >
               close
             </div>
-            <ul
-              onClick={() => {
-                setHamb(!hamb);
-              }}
-              className="flex flex-col w-[25vw] items-center justify-center md:flex-row md:justify-between"
-            >
+            <ul className="flex flex-col w-[25vw] items-center justify-center md:flex-row md:justify-between">
               <Link
                 to="/"
                 className="animate delay-100 px-5 py-2  hover:cursor-pointer hover:rounded-full hover:bg-[#174164]"
