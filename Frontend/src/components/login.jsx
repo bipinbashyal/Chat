@@ -120,7 +120,7 @@ function Login() {
           <span className="mx-4">Or</span>
           <hr className="flex-grow border-t border-gray-300" />
         </div>
-        <button className="relative gap-3 mb-5 bg-blue-700 hover:bg-blue-600 transition-all text-white  py-2 px-4  focus:outline-none focus:shadow-outline w-full rounded">
+        {/* <button className="relative gap-3 mb-5 bg-blue-700 hover:bg-blue-600 transition-all text-white  py-2 px-4  focus:outline-none focus:shadow-outline w-full rounded">
           <div className="inline absolute left-2 top-1.6">
             <svg
               className="inline"
@@ -133,9 +133,9 @@ function Login() {
             </svg>
           </div>
           Login with Facebook
-        </button>
+        </button> */}
 
-        <button className="relative bg-white hover:bg-gray-50 transition-all text-gray-500  py-2 px-4  focus:outline-none focus:shadow-outline w-full rounded border border-gray-500">
+        {/* <button className="relative bg-white hover:bg-gray-50 transition-all text-gray-500  py-2 px-4  focus:outline-none focus:shadow-outline w-full rounded border border-gray-500">
           <div className="inline absolute left-2 top-1">
             <svg
               className="inline"
@@ -148,7 +148,7 @@ function Login() {
             </svg>
           </div>
           Login with Google
-        </button>
+        </button> */}
       </div>
     </div>
   );

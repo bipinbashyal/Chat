@@ -7,9 +7,11 @@ import { IconContext } from "react-icons";
 import FileUpload from "../components/fileupload.jsx";
 import PhotoUpload from "../components/photoupload.jsx";
 import SendVoice from "../components/sendvoice.jsx";
+import { useMessagesContext } from "@/context/messagesContext.jsx";
 
 function Home() {
   const [value, setValue] = useState("");
+  const { messages } = useMessagesContext();
 
   return (
     <div className="flex w-[100vw] m-auto bg-[#D9D9D9] h-[88vh]  ">
@@ -33,7 +35,13 @@ function Home() {
             <SendBar />
           </div>
         </div>
-        <MessagesBlock />
+        {messages ? (
+          <MessagesBlock />
+        ) : (
+          <div className=" h-full flex items-center justify-center text-3xl">
+            Click chat to display messages
+          </div>
+        )}
       </div>
     </div>
   );

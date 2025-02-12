@@ -28,7 +28,9 @@ const MessagesBlock = () => {
           <div>No Messages</div>
         )
       ) : (
-        <div>Loading...</div>
+        <div className=" h-full flex items-center justify-center text-3xl">
+          Loading...
+        </div>
       )}
     </div>
   );
