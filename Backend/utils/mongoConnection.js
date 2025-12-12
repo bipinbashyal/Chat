@@ -26,7 +26,7 @@
 
 const mongoose = require("mongoose");
 
-const mongoURL- `mongodb+srv://bipinbashyal321:${process.env.MONGO_PASS}@chat.vqojnsf.mongodb.net/?appName=Chat`;
+const mongoURL= `mongodb+srv://bipinbashyal321:${process.env.MONGO_PASS}@chat.vqojnsf.mongodb.net/?appName=Chat`;
 async function connectMongodb() {
   await mongoose.connect(mongoURL);
 }
