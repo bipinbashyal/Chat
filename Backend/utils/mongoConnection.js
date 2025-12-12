@@ -27,7 +27,7 @@
 const mongoose = require("mongoose");
 
 const mongoURL = `mongodb+srv://storage3inmymobile:${process.env.MONGO_PASS}@chatusers.mufvlwv.mongodb.net/chat_application?retryWrites=true&w=majority&appName=ChatUsers`;
-
+const mongoURL- `mongodb+srv://bipinbashyal321:${process.env.MONGO_PASS}@chat.vqojnsf.mongodb.net/?appName=Chat`;
 async function connectMongodb() {
   await mongoose.connect(mongoURL);
 }
